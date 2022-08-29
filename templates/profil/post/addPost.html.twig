@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block navTitle %}Add a post{% endblock %}
+{% block pageTitle %}ADD A POST{% endblock %}
+{% block content %}
+    <div class="example-wrapper">
+        <div class="form">
+            {{ form_start(form) }}
+            {{ form_row(form.titre) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.img) }}
+            {% if is_granted('ROLE_ADMIN') %}
+                {{ form_row(form.isPatchNote) }}
+            {% else %}
+                <div style="display: none">{{ form_row(form.isPatchNote) }}</div>
+            {% endif %}
+            <button class="btn btn-primary" type="submit" >Submit post</button>
+            <button type="button" class="btn btn-secondary" value="Cancel" onclick="history.back();">Cancel</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

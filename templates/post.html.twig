@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block navTitle %}Post page{% endblock %}
+{% block content %}
+{% if post %}
+    <div class="card">
+        <img src="{{ post.img }}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.titre }}</h5>
+            <p class="card-text">{{ post.description }}</p>
+            <a class="btn btn-primary" href="{{ path('app_post_edit', {id:post.id}) }}">Modifier</a>
+            <a class="btn btn-danger" href="{{ path('app_post_delete', {id:post.id}) }}">Supprimer</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <h3 class="postTitle">LATEST POSTS</h3>
+    {% if posts %}
+        <div class="card-display">
+            {% set first_last_post = posts|last %}
+            {% set second_last_post = posts[(posts|length - 2)] %}
+            {% set third_last_post = posts[(posts|length - 3)] %}
+            <div class="card" style="width: 20rem; height: 22rem;">
+                {% if first_last_post.img %}
+                    <img src="{{ first_last_post.img }}" class="card-img-top" alt="image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ first_last_post.titre }}</h5>
+                    <p class="card-text">{{ first_last_post.description }}</p>
+                    <div class="card-content-layout">
+                        <a href="{{ path('app_one_post', {id:first_last_post.id}) }}" class="btn btn-primary">read more</a>
+                        <span class="upvote">
+                    <img src="../../assets/upvote.png" width="15" height="15">
+                    126
+                    </span>
+                        <span class="comment">
+                    <img src="../../assets/comment.png" width="15" height="15">
+                    16
+                    </span>
+                    </div>
+                </div>
+            </div>
+            {% if first_last_post != second_last_post %}
+                <div class="card" style="width: 20rem; height: 22rem;">
+                    {% if second_last_post.img %}
+                        <img src="{{ second_last_post.img }}" class="card-img-top" alt="image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ second_last_post.titre }}</h5>
+                        <p class="card-text">{{ second_last_post.description }}</p>
+                        <div class="card-content-layout">
+                            <a href="{{ path('app_one_post', {id:second_last_post.id}) }}" class="btn btn-primary">read more</a>
+                            <span class="upvote">
+                    <img src="../../assets/upvote.png" width="15" height="15">
+                    126
+                    </span>
+                            <span class="comment">
+                    <img src="../../assets/comment.png" width="15" height="15">
+                    16
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if second_last_post != third_last_post %}
+                <div class="card" style="width: 20rem; height: 22rem;">
+                    {% if third_last_post.img %}
+                        <img src="{{ third_last_post.img }}" class="card-img-top" alt="image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ third_last_post.titre }}</h5>
+                        <p class="card-text">{{ third_last_post.description }}</p>
+                        <div class="card-content-layout">
+                            <a href="{{ path('app_one_post', {id:third_last_post.id}) }}" class="btn btn-primary">read more</a>
+                            <span class="upvote">
+                    <img src="../../assets/upvote.png" width="15" height="15">
+                    126
+                    </span>
+                            <span class="comment">
+                    <img src="../../assets/comment.png" width="15" height="15">
+                    16
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="alert alert-light" role="alert">
+            A problem has occured while retrieving the posts... We're working on resolving it, try again later :)
+        </div>
+    {% endif %}
+    <a type="button" class="btn btn-primary" href="{{ path('app_post_add') }}">Add a post</a>
+{% endblock %}

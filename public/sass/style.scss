@@ -1,0 +1,109 @@
+body {
+  background-image: url('../../assets/image-background.jpg');
+  background-color: #020202FF;
+  font-family: "IM FELL Great Primer SC" !important;
+  margin:20px !important;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #cccccc;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h3 {
+  text-align: center;
+  color: #cccccc;
+}
+
+#fullpage {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-color: black;
+}
+
+.image-title {
+  margin: auto;
+  max-width: 470px;
+
+  hr {
+  border: 1px solid #cccccc !important;
+  }
+
+  h2 {
+    text-align: center;
+    color: #cccccc;
+  }
+}
+
+.navbar {
+  margin: auto;
+  max-width: 470px;
+}
+
+.dropdown {
+  margin: auto;
+}
+
+.content
+>.card-display {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.postTitle {
+  text-align: center;
+  color: #cccccc;
+  margin-top: 20px;
+}
+
+.card {
+  margin: 20px;
+}
+
+.example-wrapper {
+  max-width: 860px;
+  margin: 20px auto auto;
+  color: #cccccc;
+
+  span {
+    width: 158px;
+    padding: 6px;
+    align-items: flex-start;
+  }
+}
+
+.card-content-layout {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto ;
+
+  .btn {
+    grid-column: 1;
+  }
+
+  .upvote {
+    grid-column: 4;
+  }
+
+
+  .comment {
+    grid-column: 5;
+  }
+}

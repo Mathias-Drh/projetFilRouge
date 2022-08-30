@@ -20,8 +20,6 @@ class PostController extends AbstractController
     {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
-        $roles = $this->getUser()->getRoles();
-        $isAdmin = array_search('ADMIN', $roles);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($post);
@@ -31,8 +29,7 @@ class PostController extends AbstractController
             return $this->redirectToRoute('app_all_posts');
         }
         return $this->renderForm('profil/post/addPost.html.twig', [
-            'form' => $form,
-            'isAdmin' => $isAdmin
+            'form' => $form
         ]);
     }
 

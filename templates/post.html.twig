@@ -7,6 +7,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ post.titre }}</h5>
             <p class="card-text">{{ post.description }}</p>
+            <p class="card-text">{{ post.user }}</p>
             <a class="btn btn-primary" href="{{ path('app_post_edit', {id:post.id}) }}">Modifier</a>
             <a class="btn btn-danger" href="{{ path('app_post_delete', {id:post.id}) }}">Supprimer</a>
         </div>

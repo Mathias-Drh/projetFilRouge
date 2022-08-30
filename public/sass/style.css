@@ -65,6 +65,14 @@ h3 {
   margin-top: 20px;
 }
 
+.form {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.form span {
+  display: flex;
+}
+
 .postTitle {
   text-align: center;
   color: #cccccc;

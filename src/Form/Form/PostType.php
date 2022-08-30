@@ -3,7 +3,9 @@
 namespace App\Form\Form;
 
 use App\Entity\Post;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,8 +16,11 @@ class PostType extends AbstractType
         $builder
             ->add('titre')
             ->add('isPatchNote')
-            ->add('description')
+            ->add('description', TextareaType::class)
             ->add('img')
+            ->add('user', EntityType::class, ['class'=>'App\Entity\User', 'choice_label' => function($user) {
+                return $user->getFirstName() .' '. $user->getLastName();
+            }])
         ;
     }
 

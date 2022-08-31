@@ -3,12 +3,12 @@
     <h3 class="postTitle">LATEST POSTS</h3>
     {% if posts %}
         <div class="card-display">
-            {% set first_last_post = posts|last %}
-            {% set second_last_post = posts[(posts|length - 2)] %}
-            {% set third_last_post = posts[(posts|length - 3)] %}
+            {% set first_last_post = posts[(posts|length - 2)|abs] %}
+            {% set second_last_post = posts[(posts|length - 3)|abs] %}
+            {% set third_last_post = posts|last %}
             <div class="card" style="width: 20rem; height: 22rem;">
                 {% if first_last_post.img %}
-                    <img src="{{ first_last_post.img }}" class="card-img-top" alt="image">
+                    <img src="../pictures/{{ first_last_post.img }}" class="card-img-top" alt="image">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ first_last_post.titre }}</h5>
@@ -29,7 +29,7 @@
             {% if first_last_post != second_last_post %}
                 <div class="card" style="width: 20rem; height: 22rem;">
                     {% if second_last_post.img %}
-                        <img src="{{ second_last_post.img }}" class="card-img-top" alt="image">
+                        <img src="../pictures/{{ second_last_post.img }}" class="card-img-top" alt="image">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ second_last_post.titre }}</h5>
@@ -51,7 +51,7 @@
             {% if second_last_post != third_last_post %}
                 <div class="card" style="width: 20rem; height: 22rem;">
                     {% if third_last_post.img %}
-                        <img src="{{ third_last_post.img }}" class="card-img-top" alt="image">
+                        <img src="../pictures/{{ third_last_post.img }}" class="card-img-top" alt="image">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ third_last_post.titre }}</h5>

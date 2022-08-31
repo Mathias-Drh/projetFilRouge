@@ -108,4 +108,9 @@ h3 {
   grid-column: 5;
 }
 
+.card-img-top {
+  height: 400px;
+  object-fit: cover !important;
+}
+
 /*# sourceMappingURL=style.css.map */

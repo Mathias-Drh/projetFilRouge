@@ -5,6 +5,7 @@ namespace App\Controller\Profil;
 use App\Entity\Post;
 use App\Form\Form\PostType;
 use App\Repository\PostRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +17,17 @@ class PostController extends AbstractController
 {
 
     #[Route('/post/add', name: 'app_post_add')]
-    public function add(Request $req, EntityManagerInterface $entityManager): Response
+    public function add(Request $req, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
+            $pic = $form->get('img')->getData();
+            if ($pic) {
+                $picName = $fileUploader->upload($pic);
+                $post->setImg($picName);
+            }
             $entityManager->persist($post);
             $entityManager->flush();
             $message = "Votre bien a été ajouté !";
@@ -41,6 +47,9 @@ class PostController extends AbstractController
 
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
+            $post->setImg(
+                new File($this->getParameter('pictures_directory').'/'.$post->getImg())
+            );
             $entityManager->persist($post);
             $entityManager->flush();
             $message = "Your post was edited !";

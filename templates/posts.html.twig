@@ -7,7 +7,7 @@
             {% for post in posts %}
                 <div class="card" style="width: 20rem; height: 22rem;">
                     {% if post.img %}
-                        <img src="{{ post.img }}" class="card-img-top" alt="image">
+                        <img src="../pictures/{{ post.img }}" class="card-img-top" alt="image">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ post.titre }}</h5>

@@ -100,7 +100,7 @@ h3 {
 
 .card-content-layout {
   display: grid;
-  grid-template-columns: auto auto auto auto auto ;
+  grid-template-columns: auto auto auto auto auto;
 
   .btn {
     grid-column: 1;
@@ -114,4 +114,9 @@ h3 {
   .comment {
     grid-column: 5;
   }
+}
+
+.card-img-top {
+  height: 400px;
+  object-fit: cover !important;
 }

@@ -28,7 +28,11 @@ class AdminController extends AbstractController
     public function administrator(PostRepository $postRepository, UserRepository $userRepository): Response
     {
         $posts = $postRepository->findAll();
-        $users = $userRepository->findAll();
+        if (in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles())) {
+            $users = $userRepository->findAll();
+        } else {
+            $users = $userRepository->findByTwoRoles('["ROLE_USER"]', '["ROLE_ADMIN"]');
+        }
 
         return $this->render('profil/admin/admin.html.twig', [
             'posts' => $posts,
@@ -69,7 +73,7 @@ class AdminController extends AbstractController
             $this->addFlash('success', $message);
             return $this->redirectToRoute('app_admin');
         }
-        return $this->renderForm('profil/addUser.html.twig', [
+        return $this->renderForm('profil/admin/addUser.html.twig', [
             'form' => $form
         ]);
     }
@@ -89,7 +93,7 @@ class AdminController extends AbstractController
             $this->addFlash('success', $message);
             return $this->redirectToRoute('app_admin');
         }
-        return $this->renderForm('profil/addUser.html.twig', [
+        return $this->renderForm('profil/admin/addUser.html.twig', [
             'form' => $form
         ]);
     }

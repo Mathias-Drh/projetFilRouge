@@ -34,6 +34,16 @@ class postController extends AbstractController
         ]);
     }
 
+    #[Route('/patch_notes', name: 'app_all_patch_notes')]
+    public function showAllPatchNote(PostRepository $postRepository): Response
+    {
+        $patchNotes = $postRepository->findIfPatchNotes();
+
+        return $this->render('posts.html.twig', [
+            'posts' => $patchNotes
+        ]);
+    }
+
     #[Route('/post/{id}', name: 'app_one_post', requirements: ['id' => '\d+'])]
     public function showOne(PostRepository $postRepository, $id = null): Response
     {

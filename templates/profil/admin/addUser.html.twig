@@ -1,10 +1,13 @@
 {% extends "base.html.twig" %}
 {% block navTitle %}Create your account{% endblock %}
 {% block content %}
-    <h3 class="postTitle">CREATE YOUR ACCOUNT</h3>
+    {% if is_granted('ROLE_ADMIN') %}
+    <h3 class="postTitle">CREATE THE USER YOU WANT</h3>
+    {% else %}
+        <h3 class="postTitle">CREATE YOUR ACCOUNT</h3>
+    {% endif %}
     {{ parent() }}
     <div class="example-wrapper">
-    <div class="form">
         {{ form_start(form) }}
         {{ form_row(form.firstName) }}
         {{ form_row(form.lastName) }}
@@ -18,6 +21,5 @@
         <button class="btn btn-primary" type="submit">Send it</button>
         <button type="button" class="btn btn-secondary" value="Cancel" onclick="history.back();">Cancel</button>
         {{ form_end(form) }}
-    </div>
     </div>
 {% endblock %}

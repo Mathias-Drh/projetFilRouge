@@ -11,7 +11,7 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ post.titre }}</h5>
-                        <p class="card-text">{{ post.description }}</p>
+                        <p class="card-text">{{ post.description|length > 50 ? post.description|slice(0,50) ~ '...' : post.description }}</p>
                         <div class="card-content-layout">
                             <a href="{{ path('app_one_post', {id:post.id}) }}" class="btn btn-primary">read more</a>
                             <span class="upvote">

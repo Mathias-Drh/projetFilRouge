@@ -60,6 +60,18 @@ h3 {
   margin: auto;
 }
 
+.dropdown #login {
+  background-color: #0d6efd !important;
+}
+
+.dropdown #logout {
+  background-color: #dc3545 !important;
+}
+
+.dropdown #signin {
+  background-color: #20c997 !important;
+}
+
 .content > .card-display {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -69,11 +81,7 @@ h3 {
 
 .form {
   display: grid;
-  grid-template-columns: auto auto;
-}
-
-.form span {
-  display: flex;
+  grid-template-columns: auto;
 }
 
 .postTitle {
@@ -93,7 +101,6 @@ h3 {
 }
 
 .example-wrapper span {
-  width: 158px;
   padding: 6px;
   align-items: flex-start;
 }

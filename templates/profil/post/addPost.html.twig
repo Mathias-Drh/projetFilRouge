@@ -3,7 +3,6 @@
 {% block content %}
     <h3 class="postTitle">ADD A POST</h3>
     <div class="example-wrapper">
-        <div class="form">
             {{ form_start(form) }}
             {{ form_row(form.titre) }}
             {{ form_row(form.description) }}
@@ -17,6 +16,5 @@
             <button class="btn btn-primary" type="submit" >Submit post</button>
             <button type="button" class="btn btn-secondary" value="Cancel" onclick="history.back();">Cancel</button>
             {{ form_end(form) }}
-        </div>
     </div>
 {% endblock %}

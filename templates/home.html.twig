@@ -12,7 +12,7 @@
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ first_last_post.titre }}</h5>
-                    <p class="card-text">{{ first_last_post.description }}</p>
+                    <p class="card-text">{{ first_last_post.description|length > 50 ? first_last_post.description|slice(0,50) ~ '...' : first_last_post.description }}</p>
                     <div class="card-content-layout">
                         <a href="{{ path('app_one_post', {id:first_last_post.id}) }}" class="btn btn-primary">read more</a>
                         <span class="upvote">
@@ -33,7 +33,7 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ second_last_post.titre }}</h5>
-                        <p class="card-text">{{ second_last_post.description }}</p>
+                        <p class="card-text">{{ second_last_post.description|length > 50 ? second_last_post.description|slice(0,50) ~ '...' : second_last_post.description }}</p>
                         <div class="card-content-layout">
                             <a href="{{ path('app_one_post', {id:second_last_post.id}) }}" class="btn btn-primary">read more</a>
                             <span class="upvote">
@@ -55,7 +55,7 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ third_last_post.titre }}</h5>
-                        <p class="card-text">{{ third_last_post.description }}</p>
+                        <p class="card-text">{{ third_last_post.description|length > 50 ? third_last_post.description|slice(0,50) ~ '...' : third_last_post.description }}</p>
                         <div class="card-content-layout">
                             <a href="{{ path('app_one_post', {id:third_last_post.id}) }}" class="btn btn-primary">read more</a>
                             <span class="upvote">
